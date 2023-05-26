@@ -1,0 +1,15 @@
+.home__bg{
+    background-image: url("https://cdn.dribbble.com/users/1894420/screenshots/11700268/online-video-chat.gif");
+    height: 92vh;
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    overflow-x: hidden;
+}
+.home-message-icon{
+    margin-left: 20px;
+    display: inline-block;
+}
+
+/* https://i0.wp.com/techcrunch.com/wp-content/uploads/2020/03/getty-video-call-chat.jpg */
+/* https://cdn.dribbble.com/users/1894420/screenshots/11700268/online-video-chat.gif */
