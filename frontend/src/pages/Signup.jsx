@@ -1,7 +1,8 @@
 import React, { useState } from "react";
 import { Button, Col, Container, Row } from "react-bootstrap";
+import { useSignupUserMutation } from "../services/appApi";
 import Form from "react-bootstrap/Form";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import profilepic from "../assests/profile.png";
 import "./Signup.css";
 
@@ -9,33 +10,55 @@ const Signup = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [name, setName] = useState("");
+  const navigate=useNavigate()
+  const [signupUser, { isLoading, error }] = useSignupUserMutation();
 
-  async function uploadImage(){
-    const data=new FormData();
-    data.append('file',image)
-    data.append('upload_preset',"i8akug4o")
+  async function uploadImage() {
+    const data = new FormData();
+    data.append("file", image);
+    data.append("upload_preset", "i8akug4o");
     try {
-        setUploadingImg(true)
-        let res=await fetch ("https://api.cloudinary.com/v1_1/dwwrchruh/image/upload",{
-            method:"post",
-            body:data
-        })
-        const urlData=await res.json()
-        setUploadingImg(false)
-        return urlData.url
+      setUploadingImg(true);
+      let res = await fetch(
+        "https://api.cloudinary.com/v1_1/dwwrchruh/image/upload",
+        {
+          method: "post",
+          body: data,
+        }
+      );
+      const urlData = await res.json();
+      setUploadingImg(false);
+      return urlData.url;
     } catch (error) {
-        setUploadingImg(false)
-        console.log(error)
+      setUploadingImg(false);
+      console.log(error);
     }
   }
 
-  const handleSignup = async(e) => {
+  const handleSignup = async (e) => {
     e.preventDefault();
-    if(!image) alert("please upload your profile picture")
-    const url=await uploadImage(image)
-    console.log(url)
-    //signup the user
+    if (!image) alert("please upload your profile picture");
+    const url = await uploadImage(image);
 
+    // Pass the user object as the payload to the signupUser mutation
+    const user = {
+      name: name,
+      email: email,
+      password: password,
+      picture: url,
+    };
+
+    // Signup the user
+    signupUser(user)
+      .unwrap() // Unwrap the result to access the fulfilled value directly
+      .then((data) => {
+        console.log(data); 
+        navigate('/chat')
+        // Handle the success case
+      })
+      .catch((error) => {
+        console.log(error); // Handle any errors
+      });
   };
 
   //Image Upload states
@@ -115,7 +138,7 @@ const Signup = () => {
               />
             </Form.Group>
             <Button variant="primary" type="submit">
-              {uploadingImg ? 'signing you up...' : "Signup"}
+              {uploadingImg ? "signing you up..." : "Signup"}
             </Button>
             <div className="py-4">
               <p className="text-center">
