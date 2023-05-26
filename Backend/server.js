@@ -62,6 +62,35 @@ io.on('connection',(socket)=>{
         roomMessages=sortRoomMessagesByDate(roomMessages);
         socket.emit('room-messages',roomMessages)
     })
+
+    socket.on('message-room',async(room,content,sender,time,date)=>{
+        console.log('new-message',content)
+        const newMessage=await Message.create({content,from:sender,time,date,to:room})
+
+        let roomMessages=await getLastMessagesFromRoom(room)
+        roomMessages=sortRoomMessagesByDate(roomMessages)
+
+        //sending message to room
+        io.to(room).emit('room-messages',roomMessages)
+
+        socket.broadcast.emit('notifications',room)
+    })
+
+    app.delete('/logout',async(req,res)=>{
+        try{
+            const {_id,newMessages}=req.body
+            const user=await User.findById(_id)
+            user.status='offline'
+            user.newMesages=newMessages
+            await user.save()
+            const members=await User.find()
+            socket.broadcast.emit('new-user',members)
+            res.status(200).send()
+        }catch(error){
+            console.log(error)
+            res.status(400).send()
+        }
+    })
 })
 
 app.get("/rooms",(req,res)=>{
