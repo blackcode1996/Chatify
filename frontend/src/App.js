@@ -1,6 +1,7 @@
+import logo from "./logo.svg";
 import "./App.css";
-import Navigation from "./components/Navigation";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import Navigation from "./components/Navigation";
 import Home from "./pages/Home";
 import Login from "./pages/Login";
 import Signup from "./pages/Signup";
@@ -14,11 +15,9 @@ function App() {
   const [currentRoom, setCurrentRoom] = useState([]);
   const [members, setMembers] = useState([]);
   const [messages, setMessages] = useState([]);
-  const [privateMemberMsg, setPrivateMembersMsg] = useState({});
+  const [privateMemberMsg, setPrivateMemberMsg] = useState({});
   const [newMessages, setNewMessages] = useState({});
-
   const user = useSelector((state) => state.user);
-
   return (
     <AppContext.Provider
       value={{
@@ -30,7 +29,7 @@ function App() {
         messages,
         setMessages,
         privateMemberMsg,
-        setPrivateMembersMsg,
+        setPrivateMemberMsg,
         rooms,
         setRooms,
         newMessages,
@@ -40,14 +39,14 @@ function App() {
       <BrowserRouter>
         <Navigation />
         <Routes>
-          <Route path="/" element={<Home />}></Route>
+          <Route path="/" element={<Home />} />
           {!user && (
             <>
-              <Route path="/login" element={<Login />}></Route>
-              <Route path="/signup" element={<Signup />}></Route>
+              <Route path="/login" element={<Login />} />
+              <Route path="/signup" element={<Signup />} />
             </>
           )}
-          <Route path="/chat" element={<Chat />}></Route>
+          <Route path="/chat" element={<Chat />} />
         </Routes>
       </BrowserRouter>
     </AppContext.Provider>
