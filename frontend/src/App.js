@@ -11,7 +11,7 @@ import { AppContext, socket } from "./context/appContext";
 
 function App() {
   const [rooms, setRooms] = useState([]);
-  const [currentRoom, setcurrentRoom] = useState([]);
+  const [currentRoom, setCurrentRoom] = useState([]);
   const [members, setMembers] = useState([]);
   const [messages, setMessages] = useState([]);
   const [privateMemberMsg, setPrivateMembersMsg] = useState({});
@@ -24,7 +24,7 @@ function App() {
       value={{
         socket,
         currentRoom,
-        setcurrentRoom,
+        setCurrentRoom,
         members,
         setMembers,
         messages,

@@ -12,8 +12,8 @@ const Login = () => {
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [loginUser,{isLoading,error}]=useLoginUserMutation()
   
+  const [loginUser,{isLoading,error}]=useLoginUserMutation()
   const navigate=useNavigate()
   const {socket} = useContext(AppContext)
 

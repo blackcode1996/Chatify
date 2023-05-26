@@ -23,20 +23,19 @@ const io=require('socket.io')(server,{
     }
 })
 
-app.get("/rooms",(req,res)=>{
-    res.json(rooms)
-})
+
+
 
 async function getLastMessagesFromRoom(room){
     let roomMessages=await Message.aggregate([
         {$match:{to:room}},
-        {$group:{_id:'$date',messageByDate:{$push:'$$ROOT'}}}
+        {$group:{_id:'$date',messagesByDate:{$push:'$$ROOT'}}}
     ])
 
     return roomMessages
 }
 
-//
+
 function sortRoomMessagesByDate(messages){
     return messages.sort(function (a,b){
         let date1=a._id.split("/")
@@ -45,7 +44,7 @@ function sortRoomMessagesByDate(messages){
         date1=date1[2] + date1[0] + date1[1]
         date2=date2[2] + date2[0] + date2[1]
 
-        return date1>date2?-1:1
+        return date1<date2?-1:1
     })
 }
 
@@ -58,10 +57,15 @@ io.on('connection',(socket)=>{
     })
 
     socket.on('join-room',async(room)=>{
+        socket.join(room)
         let roomMessages=await getLastMessagesFromRoom(room)
         roomMessages=sortRoomMessagesByDate(roomMessages);
         socket.emit('room-messages',roomMessages)
     })
+})
+
+app.get("/rooms",(req,res)=>{
+    res.json(rooms)
 })
 
 
