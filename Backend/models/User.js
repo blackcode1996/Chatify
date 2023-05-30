@@ -32,6 +32,7 @@ const UserSchema = new mongoose.Schema({
   }
 }, {minimize: false});
 
+
 UserSchema.pre('save', function(next){
   const user = this;
   if(!user.isModified('password')) return next();
@@ -57,6 +58,7 @@ UserSchema.methods.toJSON = function(){
   delete userObject.password;
   return userObject;
 }
+
 
 UserSchema.statics.findByCredentials = async function(email, password) {
   const user = await User.findOne({email});

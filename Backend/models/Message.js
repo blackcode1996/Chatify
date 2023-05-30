@@ -5,7 +5,7 @@ const MessageSchema=new mongoose.Schema({
     from:Object,
     socketid:String,
     time:String,
-    data:String,
+    date:String,
     to:String
 })
 
