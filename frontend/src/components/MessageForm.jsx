@@ -25,15 +25,13 @@ function MessageForm() {
         return month + "/" + day + "/" + year;
     }
 
-    function handleSubmit(e) {
-        e.preventDefault();
-    }
 
     function scrollToBottom() {
         messageEndRef.current?.scrollIntoView({ behavior: "smooth" });
     }
 
     const todayDate = getFormattedDate();
+
 
     socket.off("room-messages").on("room-messages", (roomMessages) => {
         setMessages(roomMessages);
@@ -49,15 +47,17 @@ function MessageForm() {
         socket.emit("message-room", roomId, message, user, time, todayDate);
         setMessage("");
     }
+
+
     return (
         <>
             <div className="messages-output">
                 {user && !privateMemberMsg?._id && <div className="alert alert-info">You are in the {currentRoom} room</div>}
                 {user && privateMemberMsg?._id && (
                     <>
-                        <div className="alert alert-info conversation-info">
+                        <div className="alert alert-info conversation-info" style={{marginBottom:"10px"}}>
                             <div>
-                                Your conversation with {privateMemberMsg.name} <img src={privateMemberMsg.picture} className="conversation-profile-pic" />
+                                Your conversation with {privateMemberMsg.name} <img style={{border:"3px solid blue"}} src={privateMemberMsg.picture} className="conversation-profile-pic" />
                             </div>
                         </div>
                     </>
@@ -65,18 +65,18 @@ function MessageForm() {
                 {!user && <div className="alert alert-danger">Please login</div>}
 
                 {user &&
-                    messages.map(({ _id: date, messagesByDate }, idx) => (
+                    messages.map(({ _id:date, messagesByDate }, idx) => (
                         <div key={idx}>
                             <p className="alert alert-info text-center message-date-indicator">{date}</p>
                             {messagesByDate?.map(({ content, time, from: sender }, msgIdx) => (
                                 <div className={sender?.email == user?.email ? "message" : "incoming-message"} key={msgIdx}>
                                     <div className="message-inner">
                                         <div className="d-flex align-items-center mb-3">
-                                            <img src={sender.picture} style={{ width: 35, height: 35, objectFit: "cover", borderRadius: "50%", marginRight: 10 }} />
-                                            <p className="message-sender">{sender._id == user?._id ? "You" : sender.name}</p>
+                                            <img  src={sender.picture} style={{ width: 35, height: 35, objectFit: "cover", borderRadius: "50%", marginRight: 10 ,border:"3px solid blue"}} />
+                                            <p style={{fontFamily:"cursive"}} className="message-sender">{sender._id == user?._id ? "You" : sender.name}</p>
                                         </div>
-                                        <p className="message-content">{content}</p>
-                                        <p className="message-timestamp-left">{time}</p>
+                                        <p className="message-content" style={{fontWeight:"500"}}>{content}</p>
+                                        <p className="message-timestamp-left" style={{color:"blueviolet"}}>{time}</p>
                                     </div>
                                 </div>
                             ))}
@@ -88,11 +88,11 @@ function MessageForm() {
                 <Row>
                     <Col md={11}>
                         <Form.Group>
-                            <Form.Control type="text" placeholder="Your message" disabled={!user} value={message} onChange={(e) => setMessage(e.target.value)}></Form.Control>
+                            <Form.Control type="text" style={{border:"2px solid blue"}} placeholder="Your message..." disabled={!user} value={message} onChange={(e) => setMessage(e.target.value)}></Form.Control>
                         </Form.Group>
                     </Col>
                     <Col md={1}>
-                        <Button variant="primary" type="submit" style={{ width: "100%", backgroundColor: "orange" }} disabled={!user}>
+                        <Button  variant="primary" type="submit" style={{ width: "100%", backgroundColor: "blueviolet" , border:"3px solid orange"}} disabled={!user}>
                             <i className="fas fa-paper-plane"></i>
                         </Button>
                     </Col>

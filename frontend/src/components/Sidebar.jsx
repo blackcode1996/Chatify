@@ -66,27 +66,26 @@ function Sidebar() {
     }
 
 
-
     return (
         <>
-            <h2>Available rooms</h2>
-            <ListGroup>
+            <h2 style={{color:"blueviolet"}}>Available rooms <i style={{marginLeft:"5px",color:"blueviolet"}} className="fa fa-users"></i></h2>
+            <ListGroup style={{marginBottom:"15px"}}>
                 {rooms.map((room, idx) => (
                     <ListGroup.Item key={idx} onClick={() => joinRoom(room)} active={room == currentRoom} style={{ cursor: "pointer", display: "flex", justifyContent: "space-between" }}>
                         {room} {currentRoom !== room && <span className="badge rounded-pill bg-primary">{user.newMessages[room]}</span>}
                     </ListGroup.Item>
                 ))}
             </ListGroup>
-            <h2>Members</h2>
+            <h2 style={{color:"blueviolet"}}>Members <i style={{marginLeft:"5px",color:"blueviolet"}} class="fa fa-user" aria-hidden="true"></i></h2>
             <ListGroup>
             {members.map((member) => (
                 <ListGroup.Item key={member.id} style={{ cursor: "pointer" }} active={privateMemberMsg?._id == member?._id} onClick={() => handlePrivateMemberMsg(member)} disabled={member._id === user._id}>
                     <Row>
                         <Col xs={2} className="member-status">
-                            <img src={member.picture} className="member-status-img" />
+                            <img style={{border:member.status=="online"? "3px solid green":"3px solid orange"}} src={member.picture} className="member-status-img" />
                             {member.status == "online" ? <i className="fas fa-circle sidebar-online-status"></i> : <i className="fas fa-circle sidebar-offline-status"></i>}
                         </Col>
-                        <Col xs={9}>
+                        <Col xs={9} >
                             {member.name}
                             {member._id === user?._id && " (You)"}
                             {member.status == "offline" && " (Offline)"}

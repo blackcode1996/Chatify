@@ -4,7 +4,9 @@ import { useSignupUserMutation } from "../services/appApi";
 import Form from "react-bootstrap/Form";
 import { Link, useNavigate } from "react-router-dom";
 import profilepic from "../assests/profile.png";
+import Signup_lottie from "../assests/signup_lottie.json"
 import "./Signup.css";
+import Lottie from "lottie-react"
 
 function Signup() {
   const [email, setEmail] = useState("");
@@ -30,10 +32,10 @@ function Signup() {
   async function uploadImage() {
       const data = new FormData();
       data.append("file", image);
-      data.append("upload_preset", "your-preset-here");
+      data.append("upload_preset", "i8akug4o");
       try {
           setUploadingImg(true);
-          let res = await fetch("https://api.cloudinary.com/v1_1/your-username-here/image/upload", {
+          let res = await fetch("https://api.cloudinary.com/v1_1/dwwrchruh/image/upload", {
               method: "post",
               body: data,
           });
@@ -98,7 +100,9 @@ function Signup() {
                       </div>
                   </Form>
               </Col>
-              <Col md={5} className="signup__bg"></Col>
+              <Col md={5} className="signup_bg">
+                <Lottie animationData={Signup_lottie}/>
+              </Col>
           </Row>
       </Container>
   );
