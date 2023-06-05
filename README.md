@@ -1,9 +1,9 @@
 # Pramata-Assignment
 
 
-<h1 align="center" id="title">Chat App</h1>
+<h1 align="center" id="title">Chatify</h1>
 
-<p align="center"><img src="https://github.com/blackcode1996/Pramata-Assignment/assets/110044436/1a000124-4608-46fc-8c3e-9e6a13101eba" alt="project-image" width="180" height="200/"></p>
+<p align="center"><img src="https://chatapp-orcin-two.vercel.app/static/media/logo.d670c14bab23aa7175ed.png" alt="project-image" width="180" height="200/"></p>
 <hr/>
 
 ## :space_invader:Tech Stack Used:
