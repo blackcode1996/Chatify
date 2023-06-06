@@ -35,4 +35,6 @@
 - Real time chat with other user which will be private.
 - Real time chat with other user in different channel where message sent can be seen by every user.
 
+## :star2: About the Project
 
+This is a real-time chat app where users can communicate with each other. I will be adding more features to this app in the future.
