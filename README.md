@@ -1,4 +1,4 @@
-# Pramata-Assignment
+# Chatify
 
 
 <h1 align="center" id="title">Chatify</h1>
@@ -25,31 +25,17 @@
 <details>
 <summary>Server</summary>
   <ul>
-    <li>NodeJS</li>
-    <li>Express</li>
-    <li>MongoDB</li>
+    <li><a href="https://nodejs.org/en">NodeJS</a></li>
+    <li><a href="https://socket.io/">Socket.IO</a></li>
+    <li><a href="https://expressjs.com/">Express</a></li>
+    <li><a href="https://www.mongodb.com/">MongoDB</a></li>
   </ul>
 </details>
 
-## :accessibility: How to run it into your local system:
+## 🏛️Features:
 
-- At first do git clone of this repositary
-```
-git clone https://github.com/blackcode1996/Pramata-Assignment.git
-```
-- After cloning it into your local system install all node modules using (npm i) in both backend and frontend folder
-```
-npm i 
-```
-- Start the server at your local system 
-```
-npm run dev
-```
-- At last run the command in the froentend(npm start)
-```
-npm start
-```
-- For backend documentaion refer to this link below
-```
-https://documenter.getpostman.com/view/25625593/2s93m7VLty
-```
+- Authentication of user.
+- Real time chat with other user which will be private.
+- Real time chat with other user in different channel where message sent can be seen by every user.
+
+
