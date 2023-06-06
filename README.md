@@ -38,3 +38,26 @@
 ## :star2: About the Project
 
 This is a real-time chat app where users can communicate with each other. I will be adding more features to this app in the future.
+
+## :camera: Screenshots
+
+### HomePage
+| Desktop View | Mobile View |
+| ------ | ------ |
+| <img width="400" height="200" src="https://github.com/blackcode1996/Chatify/assets/110044436/741a951e-8ff5-4e38-bec1-ef42f6040304"  /> | <img align="center"  width="100" height="200" src="https://github.com/blackcode1996/Chatify/assets/110044436/65e800d6-a715-413f-aaa5-c941b46f9f74"> |
+
+### SignUpPage
+| Desktop View | Mobile View |
+| ------ | ------ |
+| <img width="400" height="200" src="https://github.com/blackcode1996/Chatify/assets/110044436/5e5295f8-e0b4-42e5-92db-e82ef7aca845"  /> | <img align="center"  width="100" height="200" src="https://github.com/blackcode1996/Chatify/assets/110044436/ab66a9e6-7f36-409c-879a-2068cb84167a"> |
+
+### LoginPage
+| Desktop View | Mobile View |
+| ------ | ------ |
+| <img width="400" height="200" src="https://github.com/blackcode1996/Chatify/assets/110044436/56a9fa74-aca3-4fb9-adfd-acbbb0d1a190"  /> | <img align="center"  width="100" height="200" src="https://github.com/blackcode1996/Chatify/assets/110044436/d756636e-4be2-4d95-8716-b23be73afe19"> |
+
+
+### ChatPage
+| Desktop View | Mobile View |
+| ------ | ------ |
+| <img width="400" height="200" src="https://github.com/blackcode1996/Chatify/assets/110044436/08df19d5-7e0f-4c08-9d5b-6c9ab25b50dd"  /> | <img align="center"  width="100" height="200" src="https://github.com/blackcode1996/Chatify/assets/110044436/f032a114-3906-41ac-87a9-a6c07bfe49b9"> |
