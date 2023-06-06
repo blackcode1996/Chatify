@@ -1,6 +1,3 @@
-# Chatify
-
-
 <h1 align="center" id="title">Chatify</h1>
 
 <p align="center"><img src="https://chatapp-orcin-two.vercel.app/static/media/logo.d670c14bab23aa7175ed.png" alt="project-image" width="180" height="200/"></p>
