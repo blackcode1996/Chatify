@@ -1,3 +1,8 @@
+.sidebar-container {
+    position: sticky;
+    top: 0;
+    /* overflow-y: auto; */
+}
 .member-status-img {
     width: 30px;
     height: 30px;
