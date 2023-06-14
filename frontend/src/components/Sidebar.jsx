@@ -9,6 +9,7 @@ function Sidebar() {
   const [loadingRooms, setLoadingRooms] = useState(true);
   const [loadingMembers, setLoadingMembers] = useState(true);
 
+
   const user = useSelector((state) => state.user);
   const dispatch = useDispatch();
   const {
@@ -22,6 +23,8 @@ function Sidebar() {
     setPrivateMemberMsg,
     currentRoom,
   } = useContext(AppContext);
+
+  console.log(members)
 
   function joinRoom(room, isPublic = true) {
     if (!user) {
@@ -52,6 +55,7 @@ function Sidebar() {
 
   socket.off("new-user").on("new-user", (payload) => {
     setMembers(payload);
+    setLoadingMembers(false)
   });
 
   function getRooms() {
