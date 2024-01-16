@@ -3,7 +3,7 @@
 <p align="center"><img src="https://chatapp-orcin-two.vercel.app/static/media/logo.d670c14bab23aa7175ed.png" alt="project-image" width="180" height="200/"></p>
 <hr/>
 
-## :space_invader:Tech Stack Used:
+## :space_invader:Tech Stacks Used:
 
 <details>
   <summary>Client</summary>
